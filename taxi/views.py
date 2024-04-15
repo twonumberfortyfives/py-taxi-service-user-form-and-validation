@@ -119,4 +119,4 @@ def car_assign_to_user(request: HttpRequest, pk: int) -> HttpResponse:
             car.save()
         else:
             raise Exception("You already have this car")
-        return redirect('taxi:car-list')
+        return redirect("taxi:car-list")
