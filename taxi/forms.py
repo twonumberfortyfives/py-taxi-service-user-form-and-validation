@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from taxi.models import Driver, Car
 
 
-class DriverLicenseUpdateForm(forms.ModelForm):
+class DriverCreationForm(forms.ModelForm):
     CORRECT_AMOUNT = 8
 
     license_number = forms.CharField(max_length=CORRECT_AMOUNT)
@@ -22,7 +22,7 @@ class DriverLicenseUpdateForm(forms.ModelForm):
     def clean_license_number(self):
         license_number = self.cleaned_data["license_number"]
 
-        if len(license_number) != DriverLicenseUpdateForm.CORRECT_AMOUNT:
+        if len(license_number) != DriverCreationForm.CORRECT_AMOUNT:
             raise ValidationError("Invalid length of license number")
         elif license_number[:3] != license_number[:3].upper():
             raise ValidationError(
